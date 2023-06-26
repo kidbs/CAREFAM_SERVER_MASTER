@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+    id 'org.springframework.boot' version '2.7.12'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.jbp'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.3'
+
+    //MyBatis 추가
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    annotationProcessor 'org.projectlombok:lombok'
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-jdbc
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.7.3'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
