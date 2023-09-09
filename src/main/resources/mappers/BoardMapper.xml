@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jbp.animal060707.mappers.BoardMapper">
+
+    <insert id="boardInsert" useGeneratedKeys="true" keyProperty="index">
+        INSERT INTO `animal_api`.`board`(`writer`, `title`, `content`,`create_Date`)
+        VALUES (#{writer}, #{title}, #{content},#{createDate})
+    </insert>
+
+    <update id="boardUpdate" >
+        UPDATE `animal_api`.`board`
+        SET `content`=#{content},`update_Date`=#{updateDate}
+        WHERE `writer` =#{writer}
+
+    </update>
+
+    <select id="boardSearch" resultType="BoardEntity">
+        SELECT * FROM `animal_api`.`board` WHERE `writer` LIKE CONCAT('%', #{search}, '%')
+    </select>
+
+    <delete id="boardDelete" >
+        DELETE FROM `animal_api`.`board` WHERE `index` = #{index}
+    </delete>
+
+
+
+
+    <select id="getAllBoard" resultType="BoardEntity">
+        SELECT * FROM animal_api.board
+    </select>
+
+    <select id="boardCount" resultType="Integer">
+        SELECT COUNT(*) FROM animal_api.board
+    </select>
+</mapper>

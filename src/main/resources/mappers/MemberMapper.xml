@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jbp.animal060707.mappers.MemberMapper">
+    <insert id="memberSubmit" useGeneratedKeys="true" keyProperty="index">
+        INSERT INTO `animal_api`.`member` (`name`,`id`,`pw`,`email`,`create_Date`,`update_Date`)
+        VALUES (#{name},#{id},#{pw},#{email},#{createDate},#{updateDate})
+    </insert>
+
+    <select id="memberLogin" resultType="Integer">
+        SELECT COUNT(*) FROM `animal_api`.`member` WHERE id=#{id} AND pw=#{pw}
+    </select>
+
+    <update id="memberModifyPw" >
+        UPDATE `animal_api`.`member`
+        SET pw=#{pw},update_Date=#{updateDate}
+        WHERE id=#{id}
+    </update>
+
+    <select id="memberSearch" resultType="MemberEntity">
+        SELECT * FROM `animal_api`.`member` WHERE id LIKE CONCAT('%', #{search}, '%')
+    </select>
+
+    <select id="duplicateId" resultType="Integer">
+        SELECT COUNT(*) FROM  `animal_api`.`member` WHERE id=#{id}
+    </select>
+</mapper>

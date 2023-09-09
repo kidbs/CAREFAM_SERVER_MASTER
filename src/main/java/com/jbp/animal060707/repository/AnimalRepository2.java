@@ -27,40 +27,46 @@ public class AnimalRepository2 {
             animal.setFacility(resultSet.getString("facility"));
             animal.setParking(resultSet.getString("parking"));
             animal.setCategory3(resultSet.getString("category3"));
+            animal.setParking(resultSet.getString("parking"));
+            animal.setAddress(resultSet.getString("address"));
+            animal.setOperatingTime(resultSet.getString("operatingTime"));
             animal.setAccompanying(resultSet.getString("accompanying"));
             animal.setClosedDays(resultSet.getString("closedDays"));
+            animal.setHomePage(resultSet.getString("homePage"));
+            animal.setPhoneNumber(resultSet.getString("phoneNumber"));
             return animal;
 
 
         };
     }
-    public List<AnimalEntity> getSearch(String keyword){
-        String query= "SELECT city,municipality,facility,parking,category3,accompanying,closedDays FROM animal_api.animal WHERE facility LIKE ? ORDER BY facility ASC";
-        String searchKeyword = "%"+keyword+"%";
-        return jdbcTemplate.query(query,mapAnimalEntity(),searchKeyword);
+
+    public List<AnimalEntity> getSearch(String keyword) {
+        String query = "SELECT city,municipality,facility,parking,category3,accompanying,closedDays FROM animal_api.animal WHERE facility LIKE ? ORDER BY facility ASC";
+        String searchKeyword = "%" + keyword + "%";
+        return jdbcTemplate.query(query, mapAnimalEntity(), searchKeyword);
     }
 
-    public List<AnimalEntity> getFindsCategory(String...categories) {
-        StringBuilder query = new StringBuilder("SELECT city,municipality,facility,parking,category3,accompanying,closedDays FROM animal_api.animal WHERE category3 IN (");
+    public List<AnimalEntity> getFindsCategory(String... categories) {
+        StringBuilder query = new StringBuilder("SELECT city,municipality,facility,parking,category3,accompanying,closedDays,address,operatingTime,address,homePage,phoneNumber FROM animal_api.animal WHERE category3 IN (");
         for (int i = 0; i < categories.length; i++) {
             query.append("?");
-            if(i < categories.length-1){
+            if (i < categories.length - 1) {
                 query.append(",");
 
-        }
+            }
 
 
         }
         query.append(") ORDER BY category3 ASC;");
-        return jdbcTemplate.query(query.toString(),mapAnimalEntity(),categories);
+        return jdbcTemplate.query(query.toString(), mapAnimalEntity(), categories);
     }
 
-    public List<AnimalEntity> getFindsCity(String...cities){
-        StringBuilder query= new StringBuilder("SELECT city,municipality,facility,parking,accompanying,category3,closedDays FROM animal_api.animal WHERE city IN (");
+    public List<AnimalEntity> getFindsCity(String... cities) {
+        StringBuilder query = new StringBuilder("SELECT city,municipality,facility,parking,accompanying,category3,closedDays,address,phoneNumber,homePage,operatingTime FROM animal_api.animal WHERE city IN (");
 
         for (int i = 0; i < cities.length; i++) {
             query.append("?");
-            if(i< cities.length-1){
+            if (i < cities.length - 1) {
                 query.append(",");
 
             }
@@ -68,6 +74,6 @@ public class AnimalRepository2 {
 
         }
         query.append(") ORDER BY city ASC;");
-        return jdbcTemplate.query(query.toString(),mapAnimalEntity(),cities);
+        return jdbcTemplate.query(query.toString(), mapAnimalEntity(), cities);
     }
 }

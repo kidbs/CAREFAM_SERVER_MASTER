@@ -11,12 +11,72 @@ public class AnimalDto {
     
     private String parking;
 
-    public AnimalDto(String city, String municipality, String facility, String parking, String category3) {
+    public String getAddress() {
+        return address;
+    }
+
+    public AnimalDto setAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public String getOperatingTime() {
+        return operatingTime;
+    }
+
+    public AnimalDto setOperatingTime(String operatingTime) {
+        this.operatingTime = operatingTime;
+        return this;
+    }
+
+    public String getClosedDays() {
+        return closedDays;
+    }
+
+    public AnimalDto setClosedDays(String closedDays) {
+        this.closedDays = closedDays;
+        return this;
+    }
+
+    public String getHomePage() {
+        return homePage;
+    }
+
+    public AnimalDto setHomePage(String homePage) {
+        this.homePage = homePage;
+        return this;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public AnimalDto setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    private String address;
+
+    private String operatingTime;
+
+    private String closedDays;
+
+    private String homePage;
+
+    private String phoneNumber;
+
+    public AnimalDto(String city, String municipality, String facility, String parking, String category3, String address, String homePage, String operatingTime, String closedDays, String phoneNumber) {
         this.city=city;
         this.municipality=municipality;
         this.facility=facility;
         this.parking=parking;
         this.category3=category3;
+        this.address=address;
+        this.homePage=homePage;
+        this.operatingTime=operatingTime;
+        this.closedDays=closedDays;
+        this.phoneNumber=phoneNumber;
     }
 
 

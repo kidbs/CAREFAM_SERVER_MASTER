@@ -64,6 +64,27 @@ public class AnimalEntity {
 
     private String city;
 
+    private String homePage;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public AnimalEntity setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public String getHomePage() {
+        return homePage;
+    }
+
+    public AnimalEntity setHomePage(String homePage) {
+        this.homePage = homePage;
+        return this;
+    }
+
     public String getCity() {
         return city;
     }

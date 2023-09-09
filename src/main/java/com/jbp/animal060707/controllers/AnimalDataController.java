@@ -29,8 +29,8 @@ public class AnimalDataController {
                         animalEntity.getMunicipality(),
                         animalEntity.getFacility(),
                         animalEntity.getParking(),
-                        animalEntity.getCategory3()
-                );
+                        animalEntity.getCategory3(),
+                        animalEntity.getAddress(), animalEntity.getHomePage(), animalEntity.getOperatingTime(), animalEntity.getClosedDays(), animalEntity.getPhoneNumber());
                 return animalDto;
 
             } else {
@@ -48,7 +48,12 @@ public class AnimalDataController {
                    animalEntity.getMunicipality(),
                    animalEntity.getFacility(),
                    animalEntity.getParking(),
-                   animalEntity.getCategory3()
+                   animalEntity.getCategory3(),
+                   animalEntity.getAddress(),
+                   animalEntity.getHomePage(),
+                   animalEntity.getOperatingTime(),
+                   animalEntity.getClosedDays(),
+                   animalEntity.getPhoneNumber()
            );
            animalDtos.add(animalDto);
         }
@@ -123,6 +128,8 @@ public class AnimalDataController {
             default:
                 return null;
         }
+
+
         if (apiIndex >= 0 && apiIndex < animalEntities.size()) {
             AnimalEntity animalEntity = animalEntities.get(apiIndex);
             AnimalDto animalDto = new AnimalDto(
@@ -130,8 +137,8 @@ public class AnimalDataController {
                     animalEntity.getMunicipality(),
                     animalEntity.getFacility(),
                     animalEntity.getParking(),
-                    animalEntity.getCategory3()
-            );
+                    animalEntity.getCategory3(),
+                    animalEntity.getAddress(), animalEntity.getHomePage(), animalEntity.getOperatingTime(), animalEntity.getClosedDays(), animalEntity.getPhoneNumber());
             return animalDto;
         } else {
             //요청한 인덱스가 범위를 벗어날 경우
@@ -220,8 +227,8 @@ public class AnimalDataController {
                     animalEntity.getMunicipality(),
                     animalEntity.getFacility(),
                     animalEntity.getParking(),
-                    animalEntity.getCategory3()
-            );
+                    animalEntity.getCategory3(),
+                    animalEntity.getAddress(), animalEntity.getHomePage(), animalEntity.getOperatingTime(), animalEntity.getClosedDays(), animalEntity.getPhoneNumber());
             animalDtos.add(animalDto);
 
         }
